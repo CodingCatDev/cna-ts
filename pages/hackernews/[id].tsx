@@ -20,10 +20,9 @@ export interface HN {
 
 interface Props {
   hn?: HN
-  id?: string
 }
 
-const HackerNews: NextPage<Props> = ({ hn, id }) => {
+const HackerNews: NextPage<Props> = ({ hn }) => {
   const { isFallback } = useRouter();
 
   return (
@@ -81,7 +80,7 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticPaths: GetStaticPaths = async (): Promise<GetStaticPathsResult<Params>> => {
   // Build page on request and cache at CDN
-  // return { paths: [], fallback: true }
+  //  return { paths: [], fallback: true }
 
   //Statically Build Pages at Build Time Only
   const hn: [string] = await (await fetch('https://hacker-news.firebaseio.com/v0/topstories.json')).json()
